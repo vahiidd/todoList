@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 function EditMode({ todo, editTodo, checkRepeat }) {
   const [input, setInput] = useState(todo.todo);
-  const [repeat, setRepeat] = useState(false);
   function editHandler() {
     editTodo(todo.id, input);
   }
@@ -12,15 +11,17 @@ function EditMode({ todo, editTodo, checkRepeat }) {
   }
 
   function changeHandler(e) {
-    e.preventDefault();
     setInput(e.target.value);
-    setRepeat(checkRepeat(e.target.value));
   }
   return (
     <form>
       <TextField value={input} onChange={changeHandler} />
       <Button
-        disabled={!input.trim() || todo.todo.trim() === input.trim() || repeat}
+        disabled={
+          !input.trim() ||
+          todo.todo.trim() === input.trim() ||
+          checkRepeat(input)
+        }
         type='submit'
         color='secondary'
         onClick={editHandler}
