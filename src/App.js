@@ -1,5 +1,6 @@
 import { Typography } from '@material-ui/core';
 import { useState } from 'react';
+import uuid from 'react-uuid';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -15,7 +16,7 @@ function App() {
   function addTodo(todo) {
     const newTodo = {
       todo,
-      id: Math.random().toString(),
+      id: uuid(),
       complete: false
     };
     setTodos([...todos, newTodo]);
