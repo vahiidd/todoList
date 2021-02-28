@@ -7,7 +7,7 @@ import TodoList from './components/TodoList';
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [editIndex, setEditIndex] = useState(-1);
+  const [editId, setEditId] = useState(null);
 
   function checkRepeat(value) {
     return todos.some((todo) => todo.todo.trim() === value.trim());
@@ -23,8 +23,7 @@ function App() {
   }
 
   function onEditMode(id) {
-    const index = todos.findIndex((todo) => todo.id === id);
-    setEditIndex(index);
+    setEditId(id);
   }
 
   function toggleComplete(id) {
@@ -57,7 +56,7 @@ function App() {
         return todo;
       })
     );
-    setEditIndex(-1);
+    setEditId(null);
   }
 
   return (
@@ -73,7 +72,7 @@ function App() {
         removeTodo={removeTodo}
         editTodo={editTodo}
         onEditMode={onEditMode}
-        editIndex={editIndex}
+        editId={editId}
       />
     </div>
   );
