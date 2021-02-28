@@ -64,7 +64,7 @@ function App() {
       <Typography style={{ padding: 16 }} variant='h1'>
         React Todo
       </Typography>
-      <TodoForm addTodo={addTodo} />
+      <TodoForm addTodo={addTodo} checkRepeat={checkRepeat} />
       <TodoList
         checkRepeat={checkRepeat}
         todos={todos}

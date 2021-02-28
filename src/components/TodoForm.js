@@ -1,12 +1,12 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 
-function TodoForm({addTodo}) {
+function TodoForm({ addTodo, checkRepeat }) {
   const [input, setInput] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    addTodo(input)
+    addTodo(input);
     setInput('');
   }
 
@@ -20,7 +20,7 @@ function TodoForm({addTodo}) {
         onChange={(e) => setInput(e.target.value.trimStart())}
       />
       <Button
-        disabled={!input.trim()}
+        disabled={!input.trim() || checkRepeat(input)}
         type='submit'
         onClick={(e) => handleSubmit(e)}
       >
