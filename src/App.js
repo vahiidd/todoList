@@ -8,6 +8,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [editIndex, setEditIndex] = useState(-1);
 
+  function checkRepeat(value) {
+    return todos.some((todo) => todo.todo.trim() === value.trim());
+  }
+
   function addTodo(todo) {
     const newTodo = {
       todo,
@@ -62,6 +66,7 @@ function App() {
       </Typography>
       <TodoForm addTodo={addTodo} />
       <TodoList
+        checkRepeat={checkRepeat}
         todos={todos}
         toggleComplete={toggleComplete}
         removeTodo={removeTodo}

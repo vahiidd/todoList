@@ -9,13 +9,20 @@ function TodoList({
   removeTodo,
   editTodo,
   onEditMode,
-  editIndex
+  editIndex,
+  checkRepeat
 }) {
   return (
     <List>
       {todos.map((todo, index) => {
         if (index === editIndex) {
-          return <EditMode todo={todo} editTodo={editTodo} />;
+          return (
+            <EditMode
+              todo={todo}
+              editTodo={editTodo}
+              checkRepeat={checkRepeat}
+            />
+          );
         }
         return (
           <Todo
